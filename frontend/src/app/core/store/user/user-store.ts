@@ -1,5 +1,6 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { User } from '../../types/user';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 export interface UserState {
   user: User | null;
@@ -12,6 +13,7 @@ const initialState: UserState = {
 export const UserStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
+  withDevtools('User'),
   withMethods((store) => ({
     // State Reset
     resetUserState(): void {
